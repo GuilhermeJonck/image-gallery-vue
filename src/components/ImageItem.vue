@@ -3,13 +3,12 @@ import { ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import { getImages } from '@/services/ImageService.js'
 
-
 const images = ref(getImages())
 const visible = ref(false)
-const index = ref(0)
+const lightboxIndex = ref(0) 
 
-const showLightbox = (index) => {
-  index.value = index
+const showLightbox = (i) => {   
+  lightboxIndex.value = i 
   visible.value = true
 }
 </script>
@@ -27,7 +26,7 @@ const showLightbox = (index) => {
      <vue-easy-lightbox
        :visible="visible"
        :imgs="images.map(img => img.src)"
-       :index="index"
+       :index="lightboxIndex" 
        @hide="visible = false"
      />
 </template>
